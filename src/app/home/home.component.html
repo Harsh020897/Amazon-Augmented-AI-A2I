@@ -33,7 +33,7 @@
                   autosize
                   matInput
                   [(ngModel)]="element.value"
-                  attr.name="Value{{ i }}"
+                  [attr.name]="element.field"
                 ></textarea>
               </mat-form-field>
             </td>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<html>
+  <head>
+    <!-- Crowd HTML elements -->
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font awesome icons -->
+    <link rel="stylesheet" type="text/css"   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
+
+  <body>
+    <div class="h-100 w-100">
+      <crowd-form >
+          <!-- Hide the default button provided by crowd html -->
+          <crowd-button form-action="submit" style="display: none;">Submit</crowd-button>
+          <!-- Pass input data to our component to display it in a table format -->
+          <ng-home keys='{{ task.input.Pairs }}' images='{{ task.input.Images }}' file='{{ task.input.file_data }}'>loading</ng-home>
+          <!-- Create a custom button for submitting the edited values -->
+          <button class="btn btn-primary float-right mt-4 mr-4" id="submit">Submit</button>
+      </crowd-form>
+    </div>
+  </body>
+
+</html>
+
+<!-- Create a script to invoke the submit action of the hidden crowd form button element after user clicks on our custom button -->
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    const component = document.querySelector('#submit').addEventListener('click', (event) => {
+      document.querySelector('crowd-form').submit();
+    });
+  });
+</script>

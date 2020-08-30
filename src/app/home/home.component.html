@@ -1,0 +1,56 @@
+<div class="container-fluid content-container">
+  <div class="row">
+    <div class="col-md-5 image-container">
+      <ngx-image-viewer [src]="images" [config]="config"> </ngx-image-viewer>
+    </div>
+    <div class="col-md-7 results-container">
+      <div class="file-name-container mb-3">
+        <a (click)="redirectToFile()" class="file-name">
+          {{ fileName }}
+        </a>
+      </div>
+      <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+          <ng-container matColumnDef="field">
+            <th mat-header-cell *matHeaderCellDef>Field</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <mat-form-field class="w-100">
+                <input
+                  matInput
+                  [(ngModel)]="element.field"
+                  attr.name="Key{{ i }}"
+                  disabled
+                />
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>Value</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <mat-form-field class="w-100">
+                <!-- NOTE: The a2i output json is generated with key value pairs where key is the name of this textarea and value is its value -->
+                <textarea
+                  autosize
+                  matInput
+                  [(ngModel)]="element.value"
+                  attr.name="Value{{ i }}"
+                ></textarea>
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="confidence">
+            <th mat-header-cell *matHeaderCellDef>Confidence</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              {{ element.confidence }} %
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

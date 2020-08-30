@@ -1,0 +1,60 @@
+.content-container {
+  height: 88vh;
+  padding: 1rem;
+  margin: 0;
+}
+
+.row {
+  margin: 0 !important;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+  max-height: 100%;
+}
+
+.image-container {
+  border-right: 1px solid #ccc;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none !important;
+}
+
+tr,
+td,
+table {
+  padding-right: 0.6rem !important;
+}
+
+td {
+  vertical-align: top !important;
+}
+
+.file-name {
+  max-width: 64%;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  color: darkblue;
+}
+
+.file-name-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+input:disabled {
+  color: black !important
+}
+
+.results-container {
+  max-height: 100%;
+  overflow: auto;
+}
